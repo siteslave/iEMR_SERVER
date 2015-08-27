@@ -17,7 +17,7 @@ var _ = require('lodash');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.send({ok: true, msg: "Welcome to iEMR"});
 });
 
 router.post('/service_list', function (req, res, next) {
@@ -31,7 +31,6 @@ router.post('/service_list', function (req, res, next) {
       // Get service list
       service.getServiceList(req.db, cid)
       .then(function (rows) {
-        console.log(rows);
         res.send({ok: true, rows: rows});
       }, function (err) {
         res.send({ok: false, msg: err});
